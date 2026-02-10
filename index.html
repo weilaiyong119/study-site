@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>English <span class="highlight">Study</span></h1>
+            <p>Essential Vocabulary for High Scorers</p>
+        </header>
+
+        <div class="mode-tabs">
+            <button class="mode-tab active" id="studyTab">Study</button>
+            <button class="mode-tab" id="quizTab">Quiz</button>
+            <button class="mode-tab" id="addTab">Add Word</button>
+        </div>
+
+        <main id="studyMode">
+            <div class="card-container" id="cardContainer">
+                <div class="card">
+                    <div class="card-front">
+                        <span class="word-number" id="wordNumber">#1</span>
+                        <div class="word-header">
+                            <h2 class="word" id="wordDisplay">Loading...</h2>
+                            <button id="audioBtn" class="audio-btn" aria-label="Listen to pronunciation">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M15.54 8.46C16.4774 9.39764 17.004 10.6692 17.004 11.995C17.004 13.3208 16.4774 14.5924 15.54 15.53"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M19.07 4.93C20.9447 6.80527 21.9979 9.34836 21.9979 12C21.9979 14.6516 20.9447 17.1947 19.07 19.07"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button id="micBtn" class="audio-btn mic-btn" aria-label="Check Pronunciation">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button id="masteredBtn" class="mastered-btn" aria-label="Mark as Mastered"
+                                title="Mark as Mastered">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                                    <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="pronunciation" id="pronunciationDisplay"></p>
+                        <div id="micFeedback" class="mic-feedback hidden"></div>
+                        <div class="hint">Click to flip</div>
+                    </div>
+                    <div class="card-back">
+                        <div class="content-wrapper">
+                            <h3>Definition</h3>
+                            <p class="definition" id="definitionDisplay">...</p>
+
+                            <h3>Example</h3>
+                            <div class="example-container" style="display: flex; align-items: baseline; gap: 8px;">
+                                <p class="example" id="exampleDisplay">"The company hopes to acquire a competitor to
+                                    expand its market share."</p>
+                                <button id="exampleAudioBtn" class="audio-btn small-audio-btn"
+                                    aria-label="Listen to example" style="width: 32px; height: 32px; min-width: 32px;">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M19.07 4.93A10 10 0 0 1 19.07 19.07M15.54 8.46a5 5 0 0 1 0 7.07"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <button id="exampleMicBtn" class="audio-btn small-audio-btn mic-btn"
+                                    aria-label="Check Pronunciation"
+                                    style="width: 32px; height: 32px; min-width: 32px;">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M12 19v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M8 23h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <button id="shadowBtn" class="audio-btn small-audio-btn shadow-btn"
+                                    aria-label="Shadowing Mode (Listen & Repeat)"
+                                    title="Shadowing Mode (Listen & Repeat)"
+                                    style="width: 32px; height: 32px; min-width: 32px;">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M21 5.5l-6 6" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M21 11.5V5.5H15" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div id="exampleMicFeedback" class="mic-feedback hidden"
+                                style="margin-top: 0.5rem; font-size: 0.85rem;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="prevBtn" class="control-btn" aria-label="Previous Word">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="progress" id="progressDisplay">1 / 100</div>
+                <button id="nextBtn" class="control-btn" aria-label="Next Word">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="button-group">
+                <button id="randomBtn" class="secondary-btn">Random Word</button>
+                <button id="newSetBtn" class="secondary-btn refresh-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        style="margin-right: 6px;">
+                        <path d="M23 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M1 20v-6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    New Set
+                </button>
+            </div>
+        </main>
+
+        <main id="quizMode" class="hidden">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <span class="score-display">Score: <span id="currentScore">0</span></span>
+                    <div class="quiz-progress-dots" id="quizProgress">
+                        <!-- Dots will be generated by JS -->
+                    </div>
+                </div>
+
+                <div class="question-card">
+                    <h2 class="word" id="quizWordDisplay">Word</h2>
+                    <p class="instruction">Choose the correct definition:</p>
+                </div>
+
+                <div class="options-grid" id="optionsContainer">
+                    <!-- Options will be generated by JS -->
+                </div>
+
+                <div id="quizResult" class="quiz-result hidden">
+                    <h2>Quiz Complete!</h2>
+                    <div class="final-score" id="finalScoreDisplay">8/10</div>
+                    <button class="secondary-btn" id="restartQuizBtn">Start New Quiz</button>
+                </div>
+            </div>
+        </main>
+
+        <main id="addMode" class="hidden">
+            <div class="add-word-container">
+                <h2>Add New Word</h2>
+                <form id="addWordForm">
+                    <div class="form-group">
+                        <label for="newWord">Word</label>
+                        <input type="text" id="newWord" required placeholder="e.g. Ephemeral" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPronunciation">Pronunciation (Optional)</label>
+                        <input type="text" id="newPronunciation" placeholder="e.g. /əˈfemərəl/" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newDefinition">Definition</label>
+                        <textarea id="newDefinition" required placeholder="Lasting for a very short time."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newExample">Example Sentence</label>
+                        <textarea id="newExample" required
+                            placeholder="Fashions are ephemeral, changing with every season."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="addWordSubmitBtn">Add to List</button>
+                </form>
+                <div id="addFeedback" class="mic-feedback hidden"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Press <strong>Space</strong> or <strong>Click</strong> to flip | <strong>&larr; &rarr;</strong> to
+                navigate</p>
+        </footer>
+    </div>
+    </div>
+    <script src="words.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
